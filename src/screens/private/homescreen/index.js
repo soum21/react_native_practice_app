@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, Button } from 'react-native'
+import { connect } from "react-redux";
 
 class HomeScreen extends Component {
     constructor(props){
@@ -21,5 +22,10 @@ class HomeScreen extends Component {
 
 const styles = StyleSheet.create({})
 
+function mapStateToProps(state) {
+    return {
+        homeState: state.homeState,
+    }
+}
 
-export default HomeScreen;
+export default connect(mapStateToProps)(HomeScreen);

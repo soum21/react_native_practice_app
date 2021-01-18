@@ -1,0 +1,1 @@
+export const SET_HOMEPAGE_DATA = "SET_HOMEPAGE_DATA";

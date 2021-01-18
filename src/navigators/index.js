@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import DrawerNavigator from './drawernavigator';
+import { connect } from "react-redux";
+import {setHomeData} from '../functions/redux/actions/homeAction';
 
 class AppNavigator extends Component {
     constructor(props) {
@@ -9,8 +11,10 @@ class AppNavigator extends Component {
         this.navigationRef = React.createRef();
     }
     componentDidMount(){
+        this.props.dispatch(setHomeData());
     }
     componentDidUpdate(){
+        console.log(this.props)
     }
     navigationReady = () => {
         this.routeNameRef.current = this.navigationRef.current.getCurrentRoute().name;
@@ -40,6 +44,10 @@ class AppNavigator extends Component {
         )
     }
 }
+function mapStateToProps(state) {
+    return {
+        homeState: state.home
+    }
+}
 
-
-export default AppNavigator;
+export default connect(mapStateToProps)(AppNavigator);
